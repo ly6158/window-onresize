@@ -45,11 +45,13 @@ function WindowOnResizeObject() {
     this.resize = function () {
         window.onresize = () => {
             this.functionArray.forEach(f => {
-                try {
-                    f();
-                } catch (e) {
-                    console.error('Execution function error!', e);
-                }
+                setTimeout(()=>{
+                    try {
+                        f();
+                    } catch (e) {
+                        console.error('Execution function error!', e);
+                    }
+                },0)
             })
         }
     }

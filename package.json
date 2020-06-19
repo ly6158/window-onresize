@@ -1,6 +1,6 @@
 {
   "name": "window-onresize",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "description": "window-onresize",
   "main": "index.js",
   "scripts": {
