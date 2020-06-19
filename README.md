@@ -1,7 +1,10 @@
 # window-onresize
 
 解决项目中多处 window.onresize事件 覆盖问题
-> 使用本组件之后请不要再使用 window.onresize事件
+> window.addEventListener('resize', func); 不会有覆盖问题
+
+注: 使用本组件之后请不要再使用 window.onresize事件
+
 
 ## Installation && 安装
 
