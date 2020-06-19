@@ -1,6 +1,6 @@
 {
   "name": "window-onresize",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "window-onresize",
   "main": "index.js",
   "scripts": {
@@ -10,6 +10,11 @@
     "npm",
     "resize"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ly6158/window-onresize"
+  },
+  "homepage": "https://github.com/ly6158/window-onresize",
   "author": "ly6158",
   "license": "ISC"
 }

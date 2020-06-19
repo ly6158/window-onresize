@@ -1,11 +1,13 @@
 # window-onresize
 
-解决项目中多处使用window.onresize事件覆盖问题
+解决项目中多处 window.onresize事件 覆盖问题
 
 ## Installation && 安装
 
 ```
 npm i window-onresize
+// or
+yarn add window-onresize
 ```
 
 ## Usage && 使用
@@ -13,9 +15,10 @@ npm i window-onresize
 ```
 // main.js
 import WindowOnResize from 'window-onresize'
+// 这里以Vue项目做实例
 Vue.prototype.WindowOnResize = WindowOnResize;
 
-// 一定要是具名函数
+// 需要被监听的方法 (一定要是具名函数!!!)
 const muFunc = ()=>{
     // ...
 }
@@ -26,3 +29,6 @@ this.WindowOnResize.add(muFunc);
 // 移除绑定事件
 this.WindowOnResize.remove(muFunc);
 ```
+
+## 联系
+如果你觉得写的有BUG或者需要改进请联系我
