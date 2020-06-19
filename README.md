@@ -1,6 +1,7 @@
 # window-onresize
 
 解决项目中多处 window.onresize事件 覆盖问题
+> 使用本组件之后请不要再使用 window.onresize事件
 
 ## Installation && 安装
 
@@ -18,7 +19,7 @@ import WindowOnResize from 'window-onresize'
 // 这里以Vue项目做实例
 Vue.prototype.WindowOnResize = WindowOnResize;
 
-// 需要被监听的方法 (一定要是具名函数!!!)
+// 需要被监听的方法,一定要是具名函数,不然无法移除 (请注意函数内部this指向)
 const muFunc = ()=>{
     // ...
 }
@@ -31,4 +32,4 @@ this.WindowOnResize.remove(muFunc);
 ```
 
 ## 联系
-如果你觉得写的有BUG或者需要改进请联系我
+如果你觉得写的有BUG或者需要改进请联系我 邮箱: ly6158@qq.com

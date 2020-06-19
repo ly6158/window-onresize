@@ -1,48 +1,50 @@
-let WindowResizeInstance;// 对象实例
+let WindowOnResizeInstance;// 对象实例
 
-class WindowResize {
-    #functionArray = [];// Private properties
+function WindowOnResizeObject() {
+    this.functionArray = [];
 
     /**
      * 绑定函数方法
+     * add function
      * @param func 需要具名函数
      */
-    add(func) {
+    this.add = function (func) {
         if (func && typeof func === 'function') {
-            let fn = this.#functionArray.find(f => f === func);
+            let fn = this.functionArray.find(f => f === func);
             if (fn) {
                 console.warn('函数已存在!');
             } else {
-                this.#functionArray.push(func);
+                this.functionArray.push(func);
                 this.resize();
             }
         } else {
-            throw 'Incoming argument type is not a function!';
+            throw '[window-onresize] Incoming argument type is not a function!';
         }
-    }
+    };
 
     /**
-     * 移除方法
+     * 移除绑定
+     * remove function
      * @param func 需要具名函数(否则不能删除)
      */
-    remove(func) {
+    this.remove = function (func) {
         if (func && typeof func === 'function') {
-            let index = this.#functionArray.findIndex(f => f === func);
+            let index = this.functionArray.findIndex(f => f === func);
             if (index > -1) {
-                this.#functionArray.splice(index, 1);
+                this.functionArray.splice(index, 1);
                 this.resize();
             }
         } else {
-            throw 'Incoming argument type is not a function!';
+            throw '[window-onresize] Incoming argument type is not a function!';
         }
-    }
+    };
 
     /**
      * 重新赋值 window.onresize
      */
-    resize() {
+    this.resize = function () {
         window.onresize = () => {
-            this.#functionArray.forEach(f => {
+            this.functionArray.forEach(f => {
                 try {
                     f();
                 } catch (e) {
@@ -55,11 +57,11 @@ class WindowResize {
 
 /**
  * 获取对象实例
- * @returns {WindowResize}
+ * @returns {getWindowOnResizeInstance}
  */
-const getWindowResizeInstance = () => {
-    if (!WindowResizeInstance) WindowResizeInstance = new WindowResize();
-    return WindowResizeInstance;
-};
+const getWindowOnResizeInstance = (function () {
+    if (!WindowOnResizeInstance) WindowOnResizeInstance = new WindowOnResizeObject();
+    return WindowOnResizeInstance;
+})();
 
-module.exports = getWindowResizeInstance();
+export default getWindowOnResizeInstance;
